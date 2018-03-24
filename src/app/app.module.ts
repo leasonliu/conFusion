@@ -15,12 +15,14 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
