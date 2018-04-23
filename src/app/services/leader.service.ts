@@ -22,22 +22,37 @@ export class LeaderService {
 
   getLeaders(): Observable<Leader[]> {
     // return Observable.of(LEADERS).delay(2000);
-    return this.http.get(BaseURL + "leaders").map(res => {
-      return this.processHTTPMsgService.extractData(res);
-    });
+    return this.http
+      .get(BaseURL + "leaders")
+      .map(res => {
+        return this.processHTTPMsgService.extractData(res);
+      })
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
   }
 
   getLeader(id: number): Observable<Leader> {
     // return Observable.of(LEADERS.filter(leader => leader.id === id)[0]).delay(2000);
-    return this.http.get(BaseURL + "leaders/" + id).map(res => {
-      return this.processHTTPMsgService.extractData(res);
-    });
+    return this.http
+      .get(BaseURL + "leaders/" + id)
+      .map(res => {
+        return this.processHTTPMsgService.extractData(res);
+      })
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
   }
 
   getFeaturedLeader(): Observable<Leader> {
     // return Observable.of(LEADERS.filter(l => l.featured)[0]).delay(2000);
-    return this.http.get(BaseURL + "leaders?featured=true").map(res => {
-      return this.processHTTPMsgService.extractData(res)[0];
-    });
+    return this.http
+      .get(BaseURL + "leaders?featured=true")
+      .map(res => {
+        return this.processHTTPMsgService.extractData(res)[0];
+      })
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
   }
 }

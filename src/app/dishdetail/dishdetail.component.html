@@ -38,8 +38,12 @@
       </mat-list-item>
     </mat-list>
   </div>
-  <div [hidden]="dish" fxFlex>
+  <div [hidden]="dish || errMess" fxFlex>
     <mat-spinner></mat-spinner>
     <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 </div>
