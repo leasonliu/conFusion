@@ -37,6 +37,44 @@
         </p>
       </mat-list-item>
     </mat-list>
+    <mat-list *ngIf="commentForm.valid">
+      <mat-list-item>
+        <h1 mat-line> {{ commentForm.get('comment').value}} </h1>
+        <p mat-line> {{ commentForm.get('rating').value}} Stars</p>
+        <p mat-line>
+          <span>-- {{ commentForm.get('author').value}}</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+    <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-input-container class="half-width" dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="author" placeholder="Name" type="text" required>
+          <mat-hint>
+            <span [hidden]="!(formErrors.author)">{{formErrors.author}}</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <table class="form-size">
+        <td>
+          <mat-slider formControlName="rating" step="1" max="5" thumbLabel tickInterval="1" value="5"></mat-slider>
+        </td>
+      </table>
+      <p>
+        <mat-input-container class="full-width" dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
+          <textarea matInput formControlName="comment" placeholder="Your Comment" type="text" rows=12 required> 
+          </textarea>
+          <mat-hint>
+            <span [hidden]="!(formErrors.comment)">{{formErrors.comment}}</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">
+          Submit
+        </button>
+      </p>
+    </form>
   </div>
   <div [hidden]="dish || errMess" fxFlex>
     <mat-spinner></mat-spinner>
