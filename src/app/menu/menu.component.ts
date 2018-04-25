@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from "@angular/core";
 
 import { Dish } from "../shared/dish";
 import { DishService } from "../services/dish.service";
-import { SrvRecord } from "dns";
 
 @Component({
   selector: "app-menu",
