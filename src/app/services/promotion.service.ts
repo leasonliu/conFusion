@@ -42,7 +42,7 @@ export class PromotionService {
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
-    // return Observable.of(PROMOTIONS.filter(promo => promo.featured)[0]).delay(2000);
+  // return Observable.of(PROMOTIONS.filter(promo => promo.featured)[0]).delay(2000);
     return this.http
       .get(BaseURL + "promotions?featured=true")
       .map(res => {
