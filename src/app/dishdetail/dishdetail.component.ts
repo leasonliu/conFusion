@@ -8,7 +8,6 @@ import { Comment } from "../shared/comment";
 import { DishService } from "../services/dish.service";
 
 import "rxjs/add/operator/switchMap";
-import { MAT_SELECTION_LIST_VALUE_ACCESSOR } from "@angular/material";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { visibility, flyInOut, expand } from "../animations/app.animation";
 
